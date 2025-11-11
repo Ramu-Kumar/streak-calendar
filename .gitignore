@@ -1,7 +1,4 @@
 node_modules/
-dist/
-server/dist/
-client/dist/
 *.log
 .DS_Store
 server/data/db.json
