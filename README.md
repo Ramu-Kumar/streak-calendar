@@ -113,8 +113,9 @@ The repo ships with `vercel.json` so you can deploy the SPA and API together:
    - `MONGODB_URI`
    - `MONGODB_DB_NAME`
    - `VITE_API_URL` (e.g., `https://your-vercel-app.vercel.app`)
-3. Build command: `npm run build` (already set in `vercel.json`).
-4. Output directory: `client/dist` (handled by `vercel.json`).
+3. Install command: override Vercel’s default with `npm install --include=optional`. This pulls Rollup’s native binaries and avoids the npm optional-dependency bug that breaks the Vite build.
+4. Build command: `npm run build` (already set in `vercel.json`).
+5. Output directory: `client/dist` (handled by `vercel.json`).
 
 `api/index.js` wraps the Express application as a Vercel serverless function and includes the compiled `server/dist/**` files. Client requests are rewritten to `index.html` so the Vite SPA handles routing.
 
