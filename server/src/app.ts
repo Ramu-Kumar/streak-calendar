@@ -44,6 +44,9 @@ export function createApp(): express.Express {
   ensurePassportConfigured();
 
   const app = express();
+  // Trust proxy headers (Render/other hosting providers terminate TLS upstream)
+  // so secure cookies and protocol-aware logic work correctly behind the proxy.
+  app.set("trust proxy", 1);
 
   app.use(
     cors({
